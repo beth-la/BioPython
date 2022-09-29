@@ -38,6 +38,7 @@ from Bio.Seq import Seq
 from Bio import SeqUtils
 import argparse
 import warnings
+from Bio import SeqIO
 
 arg_parser = argparse.ArgumentParser(description="Obtener secuencia proteica con mayor cantidad de aminoacidos")
 arg_parser.add_argument("-s", "--SEQUENCE",

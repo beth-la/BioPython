@@ -77,6 +77,6 @@ def seq_orfs(input_path, output_path):
                 archivo.write(f"{' '.join(orf_sequence)}\n")
     return(1)
 
-# Llamamos a la funcion
+# Llamamos a la funcion 
 seq_orfs(arguments.FILE, arguments.OUTPUT)
 print("File created")  
