@@ -39,7 +39,7 @@ from Bio import SeqUtils
 import argparse
 import warnings
 
-arg_parser = argparse.ArgumentParser(description="Obtener secuencia proteica con mas larga")
+arg_parser = argparse.ArgumentParser(description="Obtener secuencia proteica con mayor cantidad de aminoacidos")
 arg_parser.add_argument("-s", "--SEQUENCE",
                     help="secuencia de ADN a procesar",
                     type = Seq,
@@ -75,6 +75,9 @@ def max_prot_orfs(ADN):
     if len(find) == 1:
         return(f"No se encontraron orfs: {orf} en la secuencia")
     else:
+        # Cortamos las secuencias a partir de las posiciones en donde se encontro un ORF.
+        # Guardamos estas secuencias en una lista.
+        # Regresamos el valor maximo de la lista, aquella que contiene mas aminoacidos.
         proteins = [ADN[position:].translate(to_stop = True) for position in find[1:]]
         return(max(proteins))
 
@@ -102,4 +105,4 @@ if arguments.PRINT:
 # Si se quiere pasar el resultado a un archivo
 if arguments.OUTPUT:
     with open(arguments.OUTPUT,'w') as archivo:
-        archivo.write(f"La secuencia proteica con mayor contenido de aminoacidos es:\n{proteinas}")   
+        archivo.write(f"La secuencia proteica con mayor contenido de aminoacidos es:\n{proteinas}")
