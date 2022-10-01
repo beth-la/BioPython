@@ -28,10 +28,10 @@ See also
     None
 '''
 from aminoacids_module import codon_format
-from ADN_module import complement_adn
 from Bio import SeqUtils
 from Bio.Seq import Seq
 from Bio import SeqIO
+from ADN_module import complement_adn
 import argparse
 import Bio 
 
@@ -69,19 +69,18 @@ def seq_orfs(input_path, output_path):
                 return(f"No se encontraron orfs: {orf} en la secuencia")
             # Se toman los valores de la lista generada con nt_search a exepcion del elemento 0
             # Se corta la secuencia a partir de la posicion en donde se encontro un ORF
-            # Se obtiene la secuencia cortada a partir de ese orf
-            # iteramos sobre esta secuencia para obtener los marcos de lectura 
-            # Con la funcion complement_adn de nuestro modulo, obtenemos la secuencia complemento 
-            # Esto para cada marco de lectura 
+            # Se llama a la funcion del modulo codon format para que formatee la secuencia generada 
+            # a formato de tripletes.
             for position in find[1:]:
                 orf_num += 1
                 orf_sequence = (str(id_dictionary[keys].seq[position:]))
-                for op_frame in range(0,3):
+                for op_frame in range(0,len(orf_sequence)):
                     orf_sequence_complement = (complement_adn(orf_sequence[op_frame:]))
-                    archivo.write(f">{keys} orf number: {orf_num} open reading frame: {op_frame+1}\n")
-                    archivo.write(f"{' '.join(codon_format(orf_sequence[op_frame:]))}\n")
-                    archivo.write(f">{keys} orf number: {orf_num} open reading frame: -{op_frame+1}\n")
-                    archivo.write(f"{' '.join(codon_format(orf_sequence_complement))}\n")
+                    if op_frame < 3:
+                        archivo.write(f">{keys} orf number: {orf_num} open reading frame: {op_frame+1}\n")
+                        archivo.write(f"{' '.join(codon_format(orf_sequence[op_frame:]))}\n")
+                        archivo.write(f">{keys} orf number: {orf_num} open reading frame: -{op_frame+1}\n")
+                        archivo.write(f"{' '.join(codon_format(orf_sequence_complement))}\n")
     return(1)
 
 # Llamamos a la funcion 
