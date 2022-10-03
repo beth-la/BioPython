@@ -9,7 +9,8 @@ Author
     Lopez A. Brenda E.
     
 Descripcion
-    Obtiene informacion de un archivo de GenBank 
+    Obtiene informacion de un archivo de GenBank:
+        Nombre, fecha, organismo, pais y ubicacion.
     
 Category
     GenBank 
@@ -26,6 +27,8 @@ Arguments
 See also
     None
 '''
+
+# Importando librerias 
 from Bio import SeqIO
 import argparse
 arg_parser = argparse.ArgumentParser(description="Obtener informacion de un archivo GenBank")
@@ -46,6 +49,7 @@ arg_parser.add_argument("-p","--PRINT",
                     
 arguments = arg_parser.parse_args()
 
+# Obteniendo informacion del archivo
 with open(arguments.OUTPUT,"w") as file:
     for gb_record in SeqIO.parse(arguments.FILE,"genbank"):
         file.write("Informacion obtenida del archivo\n")
@@ -55,6 +59,7 @@ with open(arguments.OUTPUT,"w") as file:
         file.write(f"\tOrganism: {' '.join(gb_record.features[0].qualifiers['organism'])}\n")
         file.write(f"\tCountry: {' '.join(gb_record.features[0].qualifiers['country'])}\n")
         file.write(f"\tLocation: {gb_record.features[0].location}\n\tType: {gb_record.features[0].type}\n")
+        # Si el usuario quiere imprimir el resultado a pantalla 
         if arguments.PRINT:
             print("Informacion obtenida del archivo\n")
             print(f"Name:\n\t{gb_record.name}\n")
