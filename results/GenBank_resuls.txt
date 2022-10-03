@@ -1,0 +1,10 @@
+Informacion obtenida del archivo
+Name:
+	NC_020806
+Date:
+	13-AUG-2018
+Features:
+	Organism: Isfahan virus
+	Country: Iran:Isfahan province
+	Location: [0:11088](+)
+	Type: source
