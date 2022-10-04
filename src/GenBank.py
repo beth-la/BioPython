@@ -58,6 +58,7 @@ with open(arguments.OUTPUT,"w") as file:
         file.write("Features:\n")
         file.write(f"\tOrganism: {' '.join(gb_record.features[0].qualifiers['organism'])}\n")
         file.write(f"\tCountry: {' '.join(gb_record.features[0].qualifiers['country'])}\n")
+        file.write(f"\tIsolation source: {' '.join(gb_record.features[0].qualifiers['isolation_source'])}\n")
         file.write(f"\tLocation: {gb_record.features[0].location}\n\tType: {gb_record.features[0].type}\n")
         # Si el usuario quiere imprimir el resultado a pantalla 
         if arguments.PRINT:
@@ -67,4 +68,5 @@ with open(arguments.OUTPUT,"w") as file:
             print("Features:\n")
             print(f"\tOrganism: {' '.join(gb_record.features[0].qualifiers['organism'])}\n")
             print(f"\tCountry: {' '.join(gb_record.features[0].qualifiers['country'])}\n")
+            print(f"\tIsolation source: {' '.join(gb_record.features[0].qualifiers['isolation_source'])}\n")
             print(f"\tLocation: {gb_record.features[0].location}\n\tType: {gb_record.features[0].type}\n")

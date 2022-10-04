@@ -6,5 +6,6 @@ Date:
 Features:
 	Organism: Isfahan virus
 	Country: Iran:Isfahan province
+	Isolation source: Phlebotomus papatasi
 	Location: [0:11088](+)
 	Type: source
