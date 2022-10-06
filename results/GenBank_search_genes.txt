@@ -1,0 +1,25 @@
+GeneBank file information: data/virus.gb
+	Organism:
+		Isfahan virus
+	Date:
+		13-AUG-2018
+	Country:
+		Iran:Isfahan province
+	Isolation source:
+		Phlebotomus papatasi
+	Gene:
+		N
+	ADN:
+		ATGACTTCTGTAGTA
+	ARN:
+		AUGACUUCUGUAGUA
+	Protein:
+		MTSVV
+	Gene:
+		G
+	ADN:
+		ATGACTTCAGTCTTA
+	ARN:
+		AUGACUUCAGUCUUA
+	Protein:
+		MTSVL
