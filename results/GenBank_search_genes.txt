@@ -15,19 +15,3 @@ GeneBank file information: data/virus.gb
 		AUGACUUCUGUAGUA
 	Protein:
 		MTSVV
-	Gene:
-		G
-	ADN:
-		ATGACTTCAGTCTTA
-	ARN:
-		AUGACUUCAGUCUUA
-	Protein:
-		MTSVL
-	Gene:
-		L
-	ADN:
-		ATGGATGAGTACTCT
-	ARN:
-		AUGGAUGAGUACUCU
-	Protein:
-		MDEYS
