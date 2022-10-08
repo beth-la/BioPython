@@ -24,6 +24,7 @@ Arguments
     -f --FILE
     -o --OUTPUT 
     -p --PRINT
+    -g --GENES
     
 See also
     None
