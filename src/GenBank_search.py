@@ -18,7 +18,7 @@ Category
     
 Usage
     Python GenBank.py [-h] -f path/to/file -o OUTPUT [-p] -g GENES 
-    py .\src\GenBank.py -f data/virus.gb -o results/GenBank_resuls.txt -g N G -p
+    py .\src\GenBank.py -f data/virus.gb -o results/GenBank_resuls.txt -g N G L -p
 Arguments
     -h --help
     -f --FILE
@@ -44,7 +44,7 @@ arg_parser.add_argument("-o", "--OUTPUT",
                     required=True)
 
 arg_parser.add_argument("-p","--PRINT",
-                    help = "Imprimir a pantalla la secuencia peptidica",
+                    help = "Imprimir a pantalla los datos obtenidos",
                     action = 'store_true',
                     required= False)
                     
@@ -60,21 +60,26 @@ arguments = arg_parser.parse_args()
 def get_info(input, output, genes):
     '''
     Toma un archivo en formato GenBank y extrae informacion de el, devolviendo un archivo.
+    Extrae:
+        Organismo, fecha, pais, fuente de aislamiento, primeros 15 nucleotidos de ADN y ARN de los 
+        genes solicitados por el usuario, posteriormente los traduce y devuelve una secuencia peptidica.
     Parameters:
         input (str): Ruta hacia el archivo de entrada que contiene la informacion en formato GenBank 
         output (str): Ruta en donde se encuentra el archivo que contendra la informacion obtenida
-        genes (list): Lista de genes a buscar en el archivo, para obtener sus primeros 15 nucleotidos de 
-        ADN, ARN y su traduccion.
+        genes (list): Lista de genes a buscar en el archivo
     Returns:
         0 (int)
     '''
     with open(output,"w") as file:
+        # Obtenemos la informacion del archivo.
         for gb_record in SeqIO.parse(input,"genbank"):
             file.write(f"GeneBank file information: {input}\n")
             file.write(f"\tOrganism:\n\t\t{' '.join(gb_record.features[0].qualifiers['organism'])}\n")
             file.write(f"\tDate:\n\t\t{gb_record.annotations['date']}\n")
             file.write(f"\tCountry:\n\t\t{' '.join(gb_record.features[0].qualifiers['country'])}\n")
             file.write(f"\tIsolation source:\n\t\t{' '.join(gb_record.features[0].qualifiers['isolation_source'])}\n")
+            # Buscamos cada gen dado por el usuario en el archivo, para asi obtener en donde empieza 
+            # y termina su secuencia, posteriormente se transcribe y traduce.
             for gene in genes:
                 for features in gb_record.features: 
                     if features.type == "gene" and features.qualifiers["gene"][0] == gene:
@@ -88,7 +93,8 @@ def get_info(input, output, genes):
     return(0)
     
 final_file = get_info(arguments.FILE, arguments.OUTPUT, arguments.GENES)
-
+if not arguments.PRINT:
+    print(f"File ready, path: {arguments.OUTPUT}")
 # Si el usuario quiere imprimir el archivo a pantalla: 
 if arguments.PRINT:
     with open (arguments.OUTPUT, "r") as file:

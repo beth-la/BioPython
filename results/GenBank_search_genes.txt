@@ -23,3 +23,11 @@ GeneBank file information: data/virus.gb
 		AUGACUUCAGUCUUA
 	Protein:
 		MTSVL
+	Gene:
+		L
+	ADN:
+		ATGGATGAGTACTCT
+	ARN:
+		AUGGAUGAGUACUCU
+	Protein:
+		MDEYS

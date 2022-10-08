@@ -6,7 +6,7 @@ for gb_record in SeqIO.parse("data/virus.gb","genbank"):
     for gene in genes:
         for features in gb_record.features: 
             if features.type == "gene":
-                print(features)
+                print(features.qualifiers["gene"])
             #if features.type == "gene" and features.qualifiers["gene"][0] == gene:
             #    print(f"Gene: {gene}")
             #    ADN = gb_record.seq[features.location.nofuzzy_start:features.location.nofuzzy_end]
