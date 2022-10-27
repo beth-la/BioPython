@@ -3,8 +3,8 @@ from Bio import Entrez
 from pprint import pprint
 Entrez.email = 'blopez.lcg.unam.mx'
 
-#handle= Entrez.einfo(db= "protein")
-#record = Entrez.read(handle)
+handle= Entrez.einfo(db= "protein")
+record = Entrez.read(handle)
 
 #for field in record["DbInfo"]["FieldList"]:
 #    if "UID" == field['Name']:
@@ -14,19 +14,21 @@ Entrez.email = 'blopez.lcg.unam.mx'
 #    if "protein_protein_small_genome" == field["Name"]:
 #        print(field["Description"])
 
-#termino = "(Drosophila[Title] OR Ecoli[Title]) AND transcriptome[Title]"
-#handle = Entrez.esearch(db= "pubmed", term = "termino")
-#result = Entrez.read(handle)
+#
+termino = "transcriptome [Title]"
+handle = Entrez.esearch(db= "pubmedhealth", term = "termino")
+result = Entrez.read(handle)
+print(result["Count"])
 
 #IDs = result["IdList"]#
 # print(IDs)
 
-handle = Entrez.einfo()
-record_db = Entrez.read(handle)
-for db in record_db['DbList']:
-    handle = Entrez.einfo(bd=db)
-    record_db = Entrez.read(handle)
-    db_field = record_db['DbInfo']
+#handle = Entrez.einfo()
+#record_db = Entrez.read(handle)
+#for db in record_db['DbList']:
+#    handle = Entrez.einfo(bd=db)
+#    record_db = Entrez.read(handle)
+#    db_field = record_db['DbInfo']
     
 #    if "protein" in db_field:
 #        chosen = db 
