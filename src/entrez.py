@@ -14,7 +14,7 @@ record = Entrez.read(handle)
 #    if "protein_protein_small_genome" == field["Name"]:
 #        print(field["Description"])
 
-#
+
 termino = "transcriptome [Title]"
 handle = Entrez.esearch(db= "pubmedhealth", term = "termino")
 result = Entrez.read(handle)
