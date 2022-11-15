@@ -1,6 +1,6 @@
 '''
 Name
-    GenBank_search.py
+    efetch search
     
 Version
     1.0
@@ -9,19 +9,18 @@ Author
     Lopez A. Brenda E.
     
 Descripcion
-
+    Programa que obtiene el nombre de articulos a partir de sus IDs
     
 Category
-    GenBank 
+    Biopython
     
 Usage
-
+    Python efetch_search.py [-h] -f path/to/file -o OUTPUT
+    
 Arguments
     -h --help
     -f --FILE
     -o --OUTPUT 
-    -p --PRINT
-    -g --GENES
     
 See also
     None
@@ -48,7 +47,7 @@ arguments = arg_parser.parse_args()
 
 def names_file(input, output):
     '''
-    Toma un archivo con IDs asociados a bases de datos y utiliza aquellos qu pertenecen a las bases de 
+    Toma un archivo con IDs asociados a bases de datos y utiliza aquellos que pertenecen a las bases de 
     datos pubmed o pmc para obtener los nombres de sus articulos.
     Parameters:
         input (str): Ruta hacia el archivo de entrada que contiene la informacion.
