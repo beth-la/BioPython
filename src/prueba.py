@@ -1,15 +1,41 @@
-from Bio import SeqIO
-import argparse
-genes = ['N','G']
+'''
+Name
+    GenBank_search.py
+    
+Version
+    1.0
+    
+Author 
+    Lopez A. Brenda E.
+    
+Descripcion
 
-for gb_record in SeqIO.parse("data/virus.gb","genbank"):
-    for gene in genes:
-        for features in gb_record.features: 
-            if features.type == "gene":
-                print(features.qualifiers["gene"])
-            #if features.type == "gene" and features.qualifiers["gene"][0] == gene:
-            #    print(f"Gene: {gene}")
-            #    ADN = gb_record.seq[features.location.nofuzzy_start:features.location.nofuzzy_end]
-            #    ARN = ADN[:15].transcribe()
-            #    protein = ADN[:15].translate()
-            #    print(protein)
+    
+Category
+    GenBank 
+    
+Usage
+
+Arguments
+    -h --help
+    -f --FILE
+    -o --OUTPUT 
+    -p --PRINT
+    -g --GENES
+    
+See also
+    None
+'''
+from ctypes.wintypes import HANDLE
+from Bio import Entrez
+import argparse
+import re
+from Bio import SeqIO
+
+Entrez.email = 'blopez.lcg.unam.mx'
+
+path = "results/entrez_ids"
+
+handle = Entrez.efetch(db= "pmc", id="9494746", rettype="abstract", retmode="text")
+read_myhandle = handle.read()
+print(read_myhandle)
